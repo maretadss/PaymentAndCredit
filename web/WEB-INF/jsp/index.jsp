@@ -12,7 +12,7 @@
         <script src="<c:url value="/resources/theme1/js/jquery-3.2.1.min.js"/>" type="text/javascript"</script>
         <script src="<c:url value="/resources/theme1/js/bootstrap.min.js"/>" type="text/javascript"</script>
         
-        <title>Paymenttt and Credit</title>
+        <title>Paymentttttttttttt and Credit</title>
     </head>
 
     <body>
