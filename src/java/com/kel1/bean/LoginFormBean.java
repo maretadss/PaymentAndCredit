@@ -5,12 +5,16 @@
  */
 package com.kel1.bean;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  *
  * @author user
  */
 public class LoginFormBean {
+    @NotEmpty(message = "Insert Your Username")
     private String username;
+    @NotEmpty(message = "Insert Your Password")
     private String password;
 
     public LoginFormBean() {

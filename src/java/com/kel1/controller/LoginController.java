@@ -38,10 +38,16 @@ public class LoginController {
     @RequestMapping(value = "/check")
     public String checkLogin(HttpSession session, @ModelAttribute("loginBean") LoginFormBean loginBean, Model model) {
         Admin admin = us.findByUsername(loginBean.getUsername());
-        if(admin.getUsername()== null) {
-            model.addAttribute("errMsg", "Username salah");
-            return "login";
+        if(admin.getUsername()==null) {
+            model.addAttribute("errMsg", "Wrong Username");
+            
+            return "loginuser";
         }
+        if (!admin.getPassword().equals(loginBean.getPassword())) {
+                model.addAttribute("errMsg", "Wrong Password");
+                return "loginuser";
+            }
+        
         
         session.setAttribute("user", admin);
         

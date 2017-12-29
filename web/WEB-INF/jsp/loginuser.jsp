@@ -24,16 +24,16 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">Please sign in</h3>
-                            <h1>${user.username}</h1>
+                            <b>${errMsg}</b>
                         </div>
                         <div class="panel-body">
                                 <form:form action="${pageContext.request.contextPath}/login/check" modelAttribute="loginBean" method="POST" >
                                     <fieldset>
                                         <div class="form-group">
-                                            <form:input class="form-control" placeholder="Username" name="username" type="text" path="username"></form:input>
+                                            <form:input class="form-control" placeholder="Username" name="username" type="text" path="username"/>
                                         </div>
                                         <div class="form-group">
-                                        <form:input class="form-control" placeholder="Password" name="password" type="password" path="password"/>
+                                            <form:input class="form-control" placeholder="Password" name="password" type="password" path="password"/>
                                         </div>
                                         <form:button class="btn btn-lg btn-success btn-block" type="submit">Submit</form:button>
                                     </fieldset>
