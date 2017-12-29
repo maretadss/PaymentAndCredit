@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -9,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Indocyber Finance</title>
 <meta name="description" content="">
-<meta name="a   uthor" content="">
+<meta name="author" content="">
 
 <!-- Favicons
     ================================================== -->
@@ -53,7 +55,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#home" class="page-scroll">Home</a></li>
-        <li><a href="#services-section" class="page-scroll">Simulasi Kredit</a></li>
+        <li><a href="#services-section" class="page-scroll">Pembayaran</a></li>
         <li><a href="#works-section" class="page-scroll">Our Partner</a></li>
         <li><a href="#about-section" class="page-scroll">About Us</a></li>
         <li><a href="#team-section" class="page-scroll">Team</a></li>
@@ -77,7 +79,7 @@
 <div id="services-section" class="text-center">
   <div class="container">
     <div class="section-title center">
-      <h2>Simulasi Kredit</h2>
+      <h2>Pembayaran</h2>
       <hr>
       <div class="clearfix"></div>
       <h5>PILIH DI BAWAH INI UNTUK TIPE PEMBAYARAN.</h5> <br>
@@ -93,6 +95,48 @@
         </li>
       </ul>
       <div class="clearfix"></div>
+      
+      
+    <!-- INI FORM -->
+         
+            <div class="card">
+                <div class="card-header">
+                    Credit Aplication Simulation
+                </div>
+                <div class="card-body">
+                    <form:form action="${pageContext.request.contextPath}/credit/check" modelAttribute="credit" method="POST" >
+                        <table>
+                            <tr><td><form:label path="hargaBarang">Harga Barang</form:label></td>
+                                <td><form:input path="hargaBarang"/></tr>
+                            <tr><td><form:label path="bungaTahunan">Bunga Tahunan</form:label></td>
+                                <td><form:input path="bungaTahunan"/></td></tr>
+                            
+                            <tr><td><form:label path="durasi">Durasi</form:label></td>
+                                <td><form:input path="durasi"/></td></tr>
+                            
+                            <tr><td><form:label path="uangMuka">Uang Muka</form:label></td>
+                                <td><form:input path="uangMuka"/></td></tr>
+                            
+                            <tr><td><form:label path="gajiPokok">Gaji Pokok</form:label></td>
+                                <td><form:input path="gajiPokok"/></td></tr>
+                            
+                            <tr><td><form:label path="bonus">Bonus</form:label></td>
+                                <td><form:input path="bonus"/></td></tr>
+                            
+                            <tr><td><form:label path="pendapatanLain">Pendapatan Lain</form:label></td>
+                                <td><form:input path="pendapatanLain" /></td></tr
+                            
+                            <tr><td><form:label path="tanggungan">Tanggungan</form:label></td>
+                                <td><form:input path="tanggungan" /></td></tr>
+                            
+                            <tr><td></td><td><form:button name="submitButton" value="Submit" class="btn">Submit</form:button></td></tr>            
+                            </table>            
+                    </form:form>
+                </div>
+            </div>
+        
+          
+      
     </div>
     </div>
     <div class="space"></div>
