@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Indocyber Finance</title>
 <meta name="description" content="">
-<meta name="a   uthor" content="">
+<meta name="author" content="">
 
 <!-- Favicons
     ================================================== -->
@@ -54,10 +54,10 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#home" class="page-scroll">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/credit" class="page-scroll">Simulasi Kredit</a></li>
-        <li><a href="#works-section" class="page-scroll">Our Partner</a></li>
-        <li><a href="#about-section" class="page-scroll">About Us</a></li>
-        <li><a href="#team-section" class="page-scroll">Team</a></li>
-        <li><a href="#contact-section" class="page-scroll">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/payment" class="page-scroll">Pembayaran</a></li>
+        <li><a href="${pageContext.request.contextPath}/aboutus" class="page-scroll">About Us</a></li>
+        <li><a href="${pageContext.request.contextPath}/team" class="page-scroll">Team</a></li>
+        <li><a href="${pageContext.request.contextPath}/contact" class="page-scroll">Contact</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -69,7 +69,7 @@
   <div class="intro-text">
       <h1>Welcome to </h1> <h1><strong><b>Indocyber <i>Finance</i></b> </strong> </h1>
     <p>Menyediakan Jasa Pembayaran Kredit</p>
-    <a href="#services-section" class="btn btn-default btn-lg page-scroll">LEARN MORE</a> </div>
+    <a href="${pageContext.request.contextPath}/credit" class="btn btn-default btn-lg page-scroll">LEARN MORE</a> </div>
 </header>
 
     <!--
