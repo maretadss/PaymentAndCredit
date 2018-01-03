@@ -17,6 +17,6 @@ public class contactController {
     @RequestMapping
     public String goToContact(){
     
-    return "contactus";
+    return "contact";
     }   
 }

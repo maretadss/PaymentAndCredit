@@ -42,7 +42,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     </head>
-    <body class="bg-success background">
+    <body>
          <!-- Navigation
     ==========================================-->
          <nav id="menu" class="navbar navbar-default navbar-fixed-top ">

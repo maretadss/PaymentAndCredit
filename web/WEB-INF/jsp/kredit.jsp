@@ -23,7 +23,7 @@
         <jsp:include page="navbar.jsp"/> 
 
         <div class="container ">
-            <div class="card m-5">
+            <div class="card ">
     <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                 <div class="card-header">
                     <legend>Credit Aplication Simulation</legend>    

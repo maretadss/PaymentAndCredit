@@ -15,18 +15,6 @@ public class BayarBean {
     private String email;
     private String telp;
 
-    public BayarBean() {
-    }
-
-    public BayarBean(String nama, String alamat, String email, String telp) {
-        this.nama = nama;
-        this.alamat = alamat;
-        this.email = email;
-        this.telp = telp;
-    }
-    
-    
-
     /**
      * @return the nama
      */

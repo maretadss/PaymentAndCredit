@@ -5,9 +5,7 @@
  */
 package com.kel1.controller;
 
-import com.kel1.bean.BayarBean;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -18,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/payment")
 public class BayarController {
     @RequestMapping
-    public String payment(Model model){
-        BayarBean paid = new BayarBean();
-        model.addAttribute("paid", paid);
+    public String payment(){
         return"formpembayaran";
     }
 }

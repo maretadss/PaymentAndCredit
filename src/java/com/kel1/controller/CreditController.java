@@ -5,10 +5,20 @@
  */
 package com.kel1.controller;
 
-import com.kel1.bean.CreditBean;
+import com.kel1.bean.CreditFormBean;
+import com.kel1.dao.CreditDAO;
+import com.kel1.entity.Admin;
+import com.kel1.entity.Credit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.servlet.http.HttpSession;
+import org.apache.jasper.Constants;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -19,25 +29,76 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/credit")
 public class CreditController {
     
-    @RequestMapping
+    @Autowired
+    CreditDAO creditDao;
+    
+    @RequestMapping()
     public String credit(Model model){
-        CreditBean kredit = new CreditBean();
-        model.addAttribute("credit", kredit);
-        return "kredit";
+        List<Credit> credits = creditDao.showCreditApproved();
+        model.addAttribute("credits", credits);
+        
+        List<Credit> creditz = creditDao.showCreditUnpproved();
+        model.addAttribute("creditz",creditz);
+        return "credit";
     }
     
-    @RequestMapping(value="/check")
-    public String checkCredit(@ModelAttribute("credit") CreditBean credit, Model model){
+    @RequestMapping("/delete/{id}")
+    public String deleteCredit(HttpSession session, @PathVariable Integer id, Model model){
+        Admin admin = (Admin) session.getAttribute("user");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        String tanggal = sdf.format(new Date());        
+        Credit credit = creditDao.findCreditById(id);
+        credit.setCreditFlag("n");
+        credit.setCreditUpdatedby(admin.getUsername());
+        credit.setCreditUpdatedtime(tanggal);
+        creditDao.editCredit(credit);
         
-        model.addAttribute("pokok", credit.pokokCicilan());
-        model.addAttribute("bunga", credit.bungaCicilan());
-        model.addAttribute("total", credit.totalKredit());
-        model.addAttribute("cicilan", credit.cicilanPerbulan());
-        model.addAttribute("penghasilan", credit.penghasilanPerbulan());
-        model.addAttribute("limit", credit.limit());
-        model.addAttribute("setuju", credit.isSetuju());
-        
-        return "simulasi";
+        return "redirect:/credit";
     }
     
+    @RequestMapping("/edit/{id}")
+    public String editCredit(HttpSession session, @PathVariable Integer id, Model model){
+        Credit credit = creditDao.findCreditById(id);
+        CreditFormBean creditBean = new CreditFormBean();
+        session.setAttribute("credit", credit);
+        model.addAttribute("creditBean", creditBean);
+        return "editcredit";
+    }
+    
+    @RequestMapping("/edit/save")
+    public String saveEditCredit(HttpSession session, CreditFormBean creditBean, Model model){
+        Admin admin = (Admin) session.getAttribute("user");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        String tanggal = sdf.format(new Date());
+        Credit credit = (Credit) session.getAttribute("credit");
+        credit.setCreditBasePrice(creditBean.getCreditBasePrice());
+        credit.setCreditDownPayment(creditBean.getCreditDownPayment());
+        credit.setCreditDuration(creditBean.getCreditDuration());
+        
+        double pokokCicilan = creditBean.getCreditBasePrice() - creditBean.getCreditDownPayment();
+        double bungaCicilan = ((pokokCicilan * creditBean.getCreditInterestRate() * creditBean.getCreditDuration())/12);
+        double bungaKredit = pokokCicilan + bungaCicilan;
+        
+        credit.setCreditInterestRate(creditBean.getCreditInterestRate());
+        credit.setCreditTotal(bungaKredit + creditBean.getCreditDownPayment());
+        credit.setCreditMonthlyInstallment(bungaKredit/creditBean.getCreditDuration());
+        
+        credit.setCreditUpdatedby(admin.getUsername());
+        credit.setCreditUpdatedtime(tanggal);
+        creditDao.editCredit(credit);
+        return "redirect:/credit";
+    }
+    
+    @RequestMapping("/approve/{id}")
+    public String approveCredit(HttpSession session, @PathVariable Integer id, Model model){
+        Admin admin = (Admin) session.getAttribute("user");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        String tanggal = sdf.format(new Date());
+        Credit credit = creditDao.findCreditById(id);
+        credit.setCreditStatus("approved");
+        credit.setCreditUpdatedby(admin.getUsername());
+        credit.setCreditUpdatedtime(tanggal);
+        creditDao.editCredit(credit);
+        return "redirect:/credit";
+    }
 }

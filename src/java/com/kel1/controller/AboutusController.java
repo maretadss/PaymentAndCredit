@@ -6,15 +6,17 @@
 package com.kel1.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 @RequestMapping("/aboutus")
 public class AboutusController {
     
-    @RequestMapping
-    public String goToAboutUs(){
-        
+    @RequestMapping()
+    public String goToAboutUs(Model model){
+       
         return "aboutus";
     }
 }

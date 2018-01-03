@@ -20,6 +20,6 @@ public class teamController {
         @RequestMapping
     public String goToAboutUs(){
         
-        return "team";
+        return "aboutus";
     }
 }

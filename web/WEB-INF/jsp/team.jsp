@@ -52,6 +52,7 @@
     </head>
     <body>
        
+        <jsp:include page="navbar.jsp"/>
         
 <!-- Team Section -->
 <div id="team-section" class="text-center">

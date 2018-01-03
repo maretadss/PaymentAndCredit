@@ -23,7 +23,7 @@
         <jsp:include page="navbar.jsp"/> 
         <!-- FORM KE2 -->
         <div class="container">
-            <div class="card m-5 background"> 
+            <div class="card m-5"> 
                 <div class="card-header">
                 <h1 style="text-align: center">Form Pembayaran</h1>
                 </div>
