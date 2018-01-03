@@ -5,11 +5,9 @@
  */
 package com.kel1.dao;
 
-import com.kel1.bean.CustomerBean;
 import com.kel1.entity.Admin;
 import com.kel1.entity.Customer;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,9 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class UserService {
+public class CustomerDao {
 
-    static final Logger logger = Logger.getLogger(UserService.class.getName());
+    static final Logger logger = Logger.getLogger(CustomerDao.class.getName());
 
     @PersistenceUnit
     EntityManagerFactory emf;

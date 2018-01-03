@@ -1,6 +1,6 @@
 <%-- 
-    Document   : test
-    Created on : Dec 31, 2017, 10:10:39 AM
+    Document   : cashView
+    Created on : Jan 3, 2018, 9:33:07 AM
     Author     : user
 --%>
 
@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <link href="<c:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
-        <title>JSP Page</title>
+        <title>Admin | Cash</title>
          <style>
             #customers {
                 font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -49,36 +49,37 @@
         </style>
     </head>
     <body>
+              <c:if test="${not empty sessionScope.user}">
         <jsp:include page="header.jsp"/>
         
       <div class="col-md-10 content">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Customer
+                Kelola Cash
             </div>
             <table id="customers">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                     <th> </th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                     <th>Action</th>
                     
 
                 </tr>
             </thead>
-            <c:forEach var="e" items="${admins}">
+            <c:forEach var="e" items="${cash}">
                 <tr>
                 <tr>
-                    <td><a href="${e.customerId}">${e.customerId}</a></td>
-                    <td>${e.customerName} </td>
-                    <td>${e.customerEmail} </td>
-                    <td>${e.customerAddress} </td>
-                    <td>${e.customerTelepon} </td>
-   
-                    <td><a href="delete/${e.customerId}"><button>DELETE</button></a> <a href="${pageContext.request.contextPath}/welcome/edit/${e.customerId}"><button>EDIT</button></a></td>
+                    <td><a href="${e.cashId}">${e.cashId}</a></td>
+                    <td>${e.paymentId.customerId.customerName} </td>
+                    <td>${e.cashPrice} </td>
+                    <td>${e.cashDate} </td>
+                    <td>${e.cashStatus}</td>
+
+                    <td><a href="${pageContext.request.contextPath}/cash/deleteCash/${e.cashId}"><button class="btn btn-danger">Delete</button></a></td>
                 </tr> 
                 </tr>      
             </c:forEach>
@@ -86,7 +87,10 @@
         
         </div>
     </div>
-        </div>
+ </c:if>
+                <c:if test="${empty sessionScope.user}">
+                    YOU NEED TO LOG IN FIRST
+                </c:if>
         
     </body>
 </html>

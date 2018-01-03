@@ -13,10 +13,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpSession;
-import org.apache.jasper.Constants;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,7 +67,11 @@ public class CreditController {
     }
     
     @RequestMapping("/edit/save")
-    public String saveEditCredit(HttpSession session, CreditFormBean creditBean, Model model){
+    public String saveEditCredit(HttpSession session, @Valid @ModelAttribute("creditBean") CreditFormBean creditBean, BindingResult result,  Model model){
+         if(result.hasErrors()){
+                return "editcredit";
+            
+            }
         Admin admin = (Admin) session.getAttribute("user");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String tanggal = sdf.format(new Date());

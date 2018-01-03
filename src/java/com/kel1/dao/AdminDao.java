@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AdminDao {
     
-    static final Logger logger = Logger.getLogger(UserService.class.getName());
+    static final Logger logger = Logger.getLogger(CustomerDao.class.getName());
 
     @PersistenceUnit
     EntityManagerFactory emf;
@@ -54,15 +54,15 @@ public class AdminDao {
     public Admin findById(Integer id) {
         setEm(emf.createEntityManager());
         Query query = getEm().createNamedQuery("Admin.findByUserid");
-        query.setParameter("userId", id);
+        query.setParameter("userid", id);
         Admin admin = (Admin) query.getSingleResult();
-        return getEm().find(Admin.class, id);
+        return admin;
     }
     
     public List<Admin> showExistAdmin() {
         setEm(emf.createEntityManager());
         Query query = getEm().createNamedQuery("Admin.findByAdminFlag");
-        query.setParameter("userId", "y");
+        query.setParameter("adminFlag", "y");
         List<Admin> admin = query.getResultList();
         return admin;
     }

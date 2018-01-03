@@ -12,7 +12,7 @@ package com.kel1.controller;
 
 
 import com.kel1.bean.LoginFormBean;
-import com.kel1.dao.UserService;
+import com.kel1.dao.CustomerDao;
 import com.kel1.entity.Admin;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     @Autowired
-    UserService us;
+    CustomerDao us;
     
     @RequestMapping("")
     public String goToLogin(Model model) {
@@ -51,7 +51,12 @@ public class LoginController {
         
         session.setAttribute("user", admin);
         
-        return "redirect:/welcome";
+        return "redirect:/login/welcome";
+    }
+    
+    @RequestMapping("/welcome")
+    public String welcomePage() {
+        return "welcomeadmin";
     }
     
     @RequestMapping("/logout")

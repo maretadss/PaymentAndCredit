@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <link href="<c:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
-        <title>JSP Page</title>
+        <title>Admin | Edit Customer</title>
          <style>
             #customers {
                 font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -50,15 +50,16 @@
         </style>
     </head>
     <body>
+        <c:if test="${not empty sessionScope.user}">
         <jsp:include page="header.jsp"/>
         
       <div class="col-md-10 content">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Customers
+                Edit Customer
             </div>
             <table id="customers">
-                <form:form action="${pageContext.request.contextPath}/welcome/saveEdit" modelAttribute="customerBean" method="POST">   
+                <form:form action="${pageContext.request.contextPath}/customer/saveEdit" modelAttribute="customerBean" method="POST">   
             <thead>
                 <tr>
                     <th>ID</th>
@@ -66,7 +67,10 @@
                     <th>Email</th>
                     <th>Address</th>
                     <th>Phone</th>
-                     <th> </th>
+                    <th>Dependant</th>
+                    <th>Salary</th>
+                    <th>Extra Revenue</th>
+                    <th>Action</th>
                     
 
                 </tr>
@@ -74,12 +78,15 @@
                 <tr>
                      
                     <td><a href="${customer.customerId}">${customer.customerId}</a></td>
-                    <td><form:input path="customerName" class="form-control" id="customerName" value="${customer.customerName}"/> </td>
-                    <td><form:input path="customerEmail" class="form-control" id="customerEmail" value="${customer.customerEmail}"/> </td>
-                    <td><form:input path="customerAddress" class="form-control" id="customerAddress" value="${customer.customerAddress}"/> </td>
-                    <td><form:input path="customerTelepon" class="form-control" id="customerTelepon" value="${customer.customerTelepon}"/></td>
+                    <td><form:input path="customerName" class="form-control" id="customerName" value="${customer.customerName}"/><form:errors path="customerName" cssClass="error"/> </td>
+                    <td><form:input path="customerEmail" class="form-control" id="customerEmail" value="${customer.customerEmail}"/> <form:errors path="customerEmail" cssClass="error"/></td>
+                    <td><form:input path="customerAddress" class="form-control" id="customerAddress" value="${customer.customerAddress}"/><form:errors path="customerAddress" cssClass="error"/> </td>
+                    <td><form:input path="customerTelepon" class="form-control" id="customerTelepon" value="${customer.customerTelepon}"/><form:errors path="customerTelepon" cssClass="error"/></td>
+                    <td><form:input path="customerTanggungan" class="form-control" id="customerAddress" value="${customer.customerTanggungan}"/> <form:errors path="customerTanggungan" cssClass="error"/></td>
+                    <td><form:input path="customerGaji" class="form-control" id="customerTelepon" value="${customer.customerGaji}"/><form:errors path="customerGaji" cssClass="error"/></td>
+                    <td><form:input path="customerPenghasilanTambahan" class="form-control" id="customerTelepon" value="${customer.customerPenghasilanTambahan}"/><form:errors path="customerPenghasilanTambahan" cssClass="error"/></td>
    
-                   <td><button type="submit" value="Submit" class="btn btn-default">Save</button></td >
+                   <td><button type="submit" value="Submit" class="btn btn-success">Save</button></td >
                         
                         
                     </form:form>
@@ -89,7 +96,10 @@
         
         </div>
     </div>
-        </div>
+                    </c:if>
+        <c:if test="${empty sessionScope.user}">
+                    YOU NEED TO LOG IN FIRST
+                </c:if>
   
     </body>
 </html>

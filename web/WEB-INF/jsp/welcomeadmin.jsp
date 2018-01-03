@@ -12,10 +12,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome</title>
+        <title>Welcome Admin</title>
          <link href="<c:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
     </head>
     <body>
+                <c:if test="${not empty sessionScope.user}">
         <jsp:include page="header.jsp"/>
         <div class="col-md-10 content">
         <div class="panel panel-default">
@@ -23,15 +24,17 @@
                 Dashboard
             </div>
             <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h1>Selamat datang ${user.username}</h1>
+                <br/>
+                Selamat Datang di Dashboard Admin. Silahkan menggunakan halaman ini dengan benar dan sebaik-baiknya. Halaman ini adalah
+                halaman khusus admin. Anda bisa mengelola data yang diperlukan seperti mengedit, menghapus, menambah dan sebagainya.
+               
             </div>
         </div>
     </div>
-        </div>
+                    </c:if>
+        <c:if test="${empty sessionScope.user}">
+                    YOU NEED TO LOG IN FIRST
+                </c:if>
     </body>
 </html>

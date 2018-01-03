@@ -5,16 +5,24 @@
  */
 package com.kel1.bean;
 
+import javax.validation.constraints.NotNull;
+
 /**
  *
  * @author user
  */
 public class CreditFormBean {
+    @NotNull(message ="min value is 0")
     private int creditDuration;
+    @NotNull(message ="min value is 0")
     private double creditBasePrice;
+    @NotNull(message ="min value is 0")
     private double creditInterestRate;
+    @NotNull(message ="min value is 0")
     private double creditDownPayment;
+    @NotNull(message ="min value is 0")
     private double creditTotal;
+    @NotNull(message ="min value is 0")
     private double creditMonthlyInstallment;
 
     /**

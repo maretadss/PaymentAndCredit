@@ -35,10 +35,12 @@
 <div class="container-fluid main-container">
     <div class="col-md-2 sidebar">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="${pageContext.request.contextPath}/welcome">Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/welcome/customer">Kelola User</a></li>
-            <li><a href="${pageContext.request.contextPath}/credit">Kelola Kredit</a></li>
-            <li><a href="#">Kelola Cash</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/login/welcome">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/customer">Kelola Customers</a></li>
+            <li><a href="${pageContext.request.contextPath}/credit">Kelola Credit</a></li>
+            <li><a href="${pageContext.request.contextPath}/cash">Kelola Cash</a></li>
+            <c:if test="${sessionScope.user.userid == 1}">
             <li><a href="${pageContext.request.contextPath}/admin">Kelola Admin</a></li>
+            </c:if>
         </ul>
     </div>
