@@ -19,6 +19,7 @@ public class SimulasiBean {
     private double bonus;
     private double pendapatanLain;
     private int tanggungan;
+    private boolean setuju;
 
      public double pokokCicilan(){
         return getHargaBarang()-getUangMuka();
@@ -43,10 +44,6 @@ public class SimulasiBean {
     public double limit(){
         return penghasilanPerbulan()/getTanggungan()+1;
    }
-    
-    public boolean isSetuju(){
-        return limit()>cicilanPerbulan();
-    }
 
     public SimulasiBean() {
     }
@@ -175,4 +172,26 @@ public class SimulasiBean {
     public void setTanggungan(int tanggungan) {
         this.tanggungan = tanggungan;
     }
+
+    /**
+     * @param setuju the setuju to set
+     */
+    public void setSetuju(double limit, double cicilanPerBulan) {
+        if(limit>cicilanPerBulan){
+        this.setuju = false;}
+        else if(limit<=cicilanPerBulan){
+        this.setuju = true;
+        }
+    }
+
+    /**
+     * @return the setuju
+     */
+    public boolean isSetuju() {
+        return setuju;
+    }
+
+    /**
+     * @param setuju the setuju to set
+     */
 }

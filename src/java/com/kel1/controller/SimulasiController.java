@@ -35,6 +35,7 @@ public class SimulasiController {
         model.addAttribute("cicilan", credit.cicilanPerbulan());
         model.addAttribute("penghasilan", credit.penghasilanPerbulan());
         model.addAttribute("limit", credit.limit());
+        credit.setSetuju(credit.cicilanPerbulan(), credit.limit());
         model.addAttribute("setuju", credit.isSetuju());
         
         return "simulasi";
