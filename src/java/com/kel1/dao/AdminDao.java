@@ -24,7 +24,48 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AdminDao {
     
-    static final Logger logger = Logger.getLogger(UserService.class.getName());
+//<<<<<<< HEAD
+//    static final Logger logger = Logger.getLogger(UserService.class.getName());
+//
+//    @PersistenceUnit
+//    EntityManagerFactory emf;
+//
+//    private EntityManager em;
+//    
+//    public Admin findByUsername(String username) {
+//        Admin admin = new Admin();
+//        try {
+//            setEm(emf.createEntityManager());
+//            Query query = getEm().createQuery("select a from Admin a where a.username = :username");
+//            query.setParameter("username", username);
+//            admin = (Admin) query.getSingleResult();
+//        } catch (NoResultException nre) {
+//            logger.severe("Username Tidak Ada");
+//        }
+//        return admin;
+//    }
+//    
+//    public List<Admin> showAllAdmin() {
+//        setEm(emf.createEntityManager());
+//        Query query = getEm().createNamedQuery("Admin.findAll");
+//        List<Admin> admin = query.getResultList();
+//        return admin;
+//    }
+//    
+//    public Admin findById(Integer id) {
+//        setEm(emf.createEntityManager());
+//        Query query = getEm().createNamedQuery("Admin.findByUserid");
+//        query.setParameter("userId", id);
+//        Admin admin = (Admin) query.getSingleResult();
+//        return getEm().find(Admin.class, id);
+//    }
+//    
+//    public List<Admin> showExistAdmin() {
+//        setEm(emf.createEntityManager());
+//        Query query = getEm().createNamedQuery("Admin.findByAdminFlag");
+//        query.setParameter("userId", "y");
+//=======
+    static final Logger logger = Logger.getLogger(CustomerDao.class.getName());
 
     @PersistenceUnit
     EntityManagerFactory emf;
@@ -54,15 +95,16 @@ public class AdminDao {
     public Admin findById(Integer id) {
         setEm(emf.createEntityManager());
         Query query = getEm().createNamedQuery("Admin.findByUserid");
-        query.setParameter("userId", id);
+        query.setParameter("userid", id);
         Admin admin = (Admin) query.getSingleResult();
-        return getEm().find(Admin.class, id);
+        return admin;
     }
     
     public List<Admin> showExistAdmin() {
         setEm(emf.createEntityManager());
         Query query = getEm().createNamedQuery("Admin.findByAdminFlag");
-        query.setParameter("userId", "y");
+        query.setParameter("adminFlag", "y");
+//>>>>>>> origin/master
         List<Admin> admin = query.getResultList();
         return admin;
     }

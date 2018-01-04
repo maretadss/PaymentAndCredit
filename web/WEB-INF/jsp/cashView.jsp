@@ -1,19 +1,18 @@
 <%-- 
-    Document   : editCustomer
-    Created on : Dec 31, 2017, 5:10:49 PM
+    Document   : cashView
+    Created on : Jan 3, 2018, 9:33:07 AM
     Author     : user
 --%>
 
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <link href="<c:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
-        <title>Admin | Edit Kredit</title>
+        <title>Admin | Cash</title>
          <style>
             #customers {
                 font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -50,48 +49,48 @@
         </style>
     </head>
     <body>
-                <c:if test="${not empty sessionScope.user}">
+              <c:if test="${not empty sessionScope.user}">
         <jsp:include page="header.jsp"/>
         
       <div class="col-md-10 content">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Edit Kredit
+                Kelola Cash
             </div>
             <table id="customers">
-                <form:form action="/PaymentAndCredit/credit/edit/save" modelAttribute="creditBean" method="POST">   
             <thead>
                 <tr>
-                    <th>Base Price</th>
-                    <th>Interest Rate</th>
-                    <th>Down Payment</th>
-                    <th>Duration</th>
-                     <th>Action</th>`
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                     <th>Action</th>
                     
 
                 </tr>
             </thead>
+            <c:forEach var="e" items="${cash}">
                 <tr>
-                     
-                    <td><form:input path="creditBasePrice" class="form-control" id="creditBasePrice" value="${credit.creditBasePrice}"/><form:errors path="creditBasePrice" cssClass="error"/> </td>
-                    <td><form:input path="creditInterestRate" class="form-control" id="creditInterestRate" value="${credit.creditInterestRate}"/><form:errors path="creditInterestRate" cssClass="error"/> </td>
-                    <td><form:input path="creditDownPayment" class="form-control" id="creditDownPayment" value="${credit.creditDownPayment}"/><form:errors path="creditDownPayment" cssClass="error"/></td>
-                    <td><form:input path="creditDuration" class="form-control" id="creditDuration" value="${credit.creditDuration}"/><form:errors path="creditDuration" cssClass="error"/></td>
-   
-                   <td><button type="submit" value="Submit" class="btn btn-success">Save</button></td >
-                        
-                        
-                    </form:form>
+                <tr>
+                    <td><a href="${e.cashId}">${e.cashId}</a></td>
+                    <td>${e.paymentId.customerId.customerName} </td>
+                    <td>${e.cashPrice} </td>
+                    <td>${e.cashDate} </td>
+                    <td>${e.cashStatus}</td>
+
+                    <td><a href="${pageContext.request.contextPath}/cash/deleteCash/${e.cashId}"><button class="btn btn-danger">Delete</button></a></td>
                 </tr> 
-                   
+                </tr>      
+            </c:forEach>
         </table>
         
         </div>
     </div>
-                    </c:if>
-        <c:if test="${empty sessionScope.user}">
+ </c:if>
+                <c:if test="${empty sessionScope.user}">
                     YOU NEED TO LOG IN FIRST
                 </c:if>
-  
+        
     </body>
 </html>

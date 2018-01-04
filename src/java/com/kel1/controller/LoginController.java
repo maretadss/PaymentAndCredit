@@ -12,7 +12,49 @@ package com.kel1.controller;
 
 
 import com.kel1.bean.LoginFormBean;
-import com.kel1.dao.UserService;
+//<<<<<<< HEAD
+//import com.kel1.dao.UserService;
+//import com.kel1.entity.Admin;
+//import javax.servlet.http.HttpSession;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//
+//@Controller
+//@RequestMapping("/login")
+//public class LoginController {
+//
+//    @Autowired
+//    UserService us;
+//    
+//    @RequestMapping("")
+//    public String goToLogin(Model model) {
+//        LoginFormBean loginBean = new LoginFormBean();
+//        model.addAttribute("loginBean", loginBean);
+//        return "loginuser";
+//    }
+//
+//    @RequestMapping(value = "/check")
+//    public String checkLogin(HttpSession session, @ModelAttribute("loginBean") LoginFormBean loginBean, Model model) {
+//        Admin admin = us.findByUsername(loginBean.getUsername());
+//        if(admin.getUsername()==null) {
+//            model.addAttribute("errMsg", "Wrong Username");
+//            
+//            return "loginuser";
+//        }
+//        if (!admin.getPassword().equals(loginBean.getPassword())) {
+//                model.addAttribute("errMsg", "Wrong Password");
+//                return "loginuser";
+//            }
+//        
+//        
+//        session.setAttribute("user", admin);
+//        
+//        return "redirect:/welcome";
+//=======
+import com.kel1.dao.CustomerDao;
 import com.kel1.entity.Admin;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +68,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     @Autowired
-    UserService us;
+    CustomerDao us;
     
     @RequestMapping("")
     public String goToLogin(Model model) {
@@ -51,7 +93,13 @@ public class LoginController {
         
         session.setAttribute("user", admin);
         
-        return "redirect:/welcome";
+        return "redirect:/login/welcome";
+    }
+    
+    @RequestMapping("/welcome")
+    public String welcomePage() {
+        return "welcomeadmin";
+//>>>>>>> origin/master
     }
     
     @RequestMapping("/logout")

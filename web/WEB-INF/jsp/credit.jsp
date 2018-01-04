@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <link href="<c:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
-        <title>JSP Page</title>
+        <title>Admin | Credit</title>
          <style>
             #customers {
                 font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -49,6 +49,7 @@
         </style>
     </head>
     <body>
+        <c:if test="${not empty sessionScope.user}">
         <jsp:include page="header.jsp"/>
         
       <div class="col-md-10 content">
@@ -64,7 +65,7 @@
                     <th>Total</th>
                     <th>Duration</th>
                     <th>Status</th>
-                     <th> </th>
+                     <th>Action</th>
                     
 
                 </tr>
@@ -78,7 +79,7 @@
                     <td>${e.creditTotal} </td>
                     <td>${e.creditDuration} </td>
                     <td>${e.creditStatus}</td>
-                    <td><a href="/PaymentAndCredit/credit/delete/${e.creditId}"><button>DELETE</button></a> <a href="/PaymentAndCredit/credit/edit/${e.creditId}"><button>EDIT</button></a></td>
+                    <td><a href="/PaymentAndCredit/credit/delete/${e.creditId}"><button class="btn btn-danger">Delete</button></a> <a href="/PaymentAndCredit/credit/edit/${e.creditId}"><button class="btn btn-warning">Edit</button></a></td>
                 </tr> 
                 </tr>      
             </c:forEach>
@@ -99,7 +100,7 @@
                     <th>Total</th>
                     <th>Duration</th>
                     <th>Status</th>
-                     <th> </th>
+                     <th>Action</th>
                     
 
                 </tr>
@@ -113,7 +114,7 @@
                     <td>${x.creditTotal} </td>
                     <td>${x.creditDuration} </td>
                     <td>${x.creditStatus}</td>
-                    <td><a href="/PaymentAndCredit/credit/approve/${x.creditId}"><button>APPROVE</button></a></td><td><a href="/PaymentAndCredit/credit/delete/${x.creditId}"><button>DELETE</button></a> <a href="/PaymentAndCredit/credit/edit/${x.creditId}"><button>EDIT</button></a></td>
+                    <td><a href="/PaymentAndCredit/credit/approve/${x.creditId}"><button class="btn btn-primary">APPROVE</button></a> <a href="/PaymentAndCredit/credit/delete/${x.creditId}"><button class="btn btn-danger">Delete</button></a> <a href="/PaymentAndCredit/credit/edit/${x.creditId}"><button class="btn btn-warning">Edit</button></a></td>
                 </tr> 
                 </tr>      
             </c:forEach>
@@ -121,6 +122,12 @@
         
         </div>
     </div>
+              
+              </c:if>
+        <c:if test="${empty sessionScope.user}">
+                    YOU NEED TO LOG IN FIRST
+                </c:if>
+              
         
     </body>
 </html>

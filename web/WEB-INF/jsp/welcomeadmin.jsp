@@ -12,23 +12,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin Page</title>
+        <title>Welcome Admin</title>
          <link href="<c:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
     </head>
     <body>
+                <c:if test="${not empty sessionScope.user}">
         <jsp:include page="header.jsp"/>
-        
-        
         <div class="col-md-10 content">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Dashboard
             </div>
             <div class="panel-body">
-                Selamat Datang Admin.
+                <h1>Selamat datang ${user.username}</h1>
+                <br/>
+                Selamat Datang di Dashboard Admin. Silahkan menggunakan halaman ini dengan benar dan sebaik-baiknya. Halaman ini adalah
+                halaman khusus admin. Anda bisa mengelola data yang diperlukan seperti mengedit, menghapus, menambah dan sebagainya.
+               
             </div>
         </div>
     </div>
-        </div>
+                    </c:if>
+        <c:if test="${empty sessionScope.user}">
+                    YOU NEED TO LOG IN FIRST
+                </c:if>
     </body>
 </html>
