@@ -42,7 +42,7 @@ public class SimulasiBean {
     }
     
     public double limit(){
-        return penghasilanPerbulan()/getTanggungan()+1;
+        return penghasilanPerbulan()/(getTanggungan()+1);
    }
 
     public SimulasiBean() {

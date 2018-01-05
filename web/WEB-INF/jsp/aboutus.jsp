@@ -17,27 +17,55 @@
 
 <!-- Favicons
     ================================================== -->
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" type="text/css" media="all" />
 <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
+<link rel="apple-touch-icon" href="<c:url value="/resources/img/apple-touch-icon.png"/>" >
+<link rel="apple-touch-icon" sizes="72x72" href="<c:url value="/resources/img/apple-touch-icon-72x72.png"/>" >
+<link rel="apple-touch-icon" sizes="114x114" href="<c:url value="resources/img/apple-touch-icon-114x114.png"/>" >
 
 <!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="<c:url value="/resources/css/bootstrap.css"/>" >
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/fonts/font-awesome/css/font-awesome.css"/>">
 
 <!-- Stylesheet
     ================================================== -->
 <link rel="stylesheet" type="text/css"  href="<c:url value="/resources/css/style.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value="resources/css/prettyPhoto.css"/>">
-
+<style>  
+        .background {
+            background-image: url("<c:url value='/resources/img/header-bg.jpg'/>");
+        }
+    </style>
     </head>
     <body>
-        <jsp:include page="navbar.jsp"/> 
+        <nav id="menu" class="navbar navbar-default navbar-fixed-top background">
+  <div class="container"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/home"><i class="fa fa-sun-o"></i> Indocyber Finance<strong></strong></a> </div>
+ 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="${pageContext.request.contextPath}/home" class="page-scroll">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/simulasi" class="page-scroll">Simulasi Kredit</a></li>
+        <li><a href="${pageContext.request.contextPath}/payment" class="page-scroll">Pembayaran</a></li>
+        <li><a href="${pageContext.request.contextPath}/team" class="page-scroll">About us</a></li>
+        
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
         <div id="about-section">
   <div class="container">
     <div class="section-title text-center center">
       <h2>About Us</h2>
       <hr>
       <div class="clearfix"></div>
-      <p>ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US</p>
-    </div>
+      <p>Project ini di mulai sejak 2 minggu yang lalu...</p></div>
     <div class="row">
         <div class="col-md-6"> <img src="<c:url value="/resources/img/about.jpg"/>" class="img-responsive"> </div>
       <div class="col-md-6">

@@ -44,7 +44,7 @@
                   </form:select>
                 </div>
                 <div class="form-group"> <label>Bunga Tahunan</label>
-                  <form:input path="bungaTahunan" class="form-control"/> </div>
+                  <form:input path="bungaTahunan" class="form-control" min="0.0" max="1.0"/> </div>
                 <div class="form-group"> <label>Uang Muka</label>
                   <form:input path="uangMuka" class="form-control"/> </div>
                 <div class="form-group"> <label>Gaji Pokok</label>
@@ -55,7 +55,7 @@
                   <form:input path="pendapatanLain" class="form-control"/> </div>
                 <div class="form-group"> <label>Tanggungan</label>
                   <form:input path="tanggungan" class="form-control"/> </div>
-                <form:button type="submit" class="btn mt-2 btn-dark">Reserve</form:button>          
+                <form:button type="submit" class="btn mt-2 btn-dark">Check</form:button>          
                     </form:form>
             </div>
           </div>

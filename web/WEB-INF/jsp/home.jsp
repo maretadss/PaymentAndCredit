@@ -68,8 +68,7 @@
   <div class="intro-text">
       <h1>Welcome to </h1> <h1><strong><b>Indocyber <i>Finance</i></b> </strong> </h1>
     <p>Menyediakan Jasa Pembayaran Kredit</p>
-    <a href="${pageContext.request.contextPath}/credit" class="btn btn-default btn-lg page-scroll">LEARN MORE</a> </div>
-</header>
+  </header>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 

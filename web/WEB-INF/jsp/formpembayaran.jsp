@@ -24,20 +24,20 @@
         <!-- FORM KE2 -->
         <div class="container">
             <div class="card m-5"> 
-                <div class="card-header">
-                <h1 style="text-align: center">Form Pembayaran</h1>
+                <div class="card-header progress-bar progress-bar-striped bg-info">
+                    <h1 style="text-align: center" class="text-light">Form Pembayaran</h1>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-light background">
                 <form:form action="#" modelAttribute="paid" method="POST" class="form-group">
 
                         <div class="form-group row">
-                            <form:label path="nama" class="col-sm-2 col-form-label">Full Name</form:label >
-                            <form:input path="nama" class="form-control col-md-3" required="true"></form:input>
+                            <form:label path="nama" class="col-sm-2 col-form-label">Full Name</form:label>
+                            <form:input type="text" path="nama" class="form-control col-md-3" required="true"></form:input>
                         </div>
                         <div class="form-group row">
                              <tr>
-                                <td><form:label path="alamat" class="col-sm-2 col-form-label">Address</form:label ></td>
-                                <td><form:input path="alamat" class="form-control col-md-3" required="true"></form:input></td>
+                                <td><form:label path="alamat" class="col-sm-2 col-form-label">Address</form:label></td>
+                                <td><form:input type="text" path="alamat" class="form-control col-md-3" required="true"></form:input></td>
                             </tr>
                         </div>
                         <div class="form-group row">
@@ -49,7 +49,7 @@
                         <div class="form-group row">
                              <tr>
                                 <td><form:label path="telp" class="col-sm-2 col-form-label">Phone Number</form:label></td>
-                                <td><form:input path="telp" class="form-control col-md-3" required="true"></form:input></td>
+                                <td><form:input type="text" path="telp" class="form-control col-md-3" required="true"></form:input></td>
                             </tr>
                         </div>
                         <div class="form-group row">
